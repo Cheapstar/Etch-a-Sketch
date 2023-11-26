@@ -23,6 +23,7 @@ grid.style.height="700px";
 grid.style.width="700px";
 grid.style.display="flex";
 grid.style.flexWrap="wrap";
+grid.style.backgroundColor="black";
 
 body.appendChild(grid);
 
@@ -39,16 +40,20 @@ function createGrid(input){
         gridItems[i].style.width = `${Number((700/input).toFixed(2))}px`;
         gridItems[i].style.height = `${Number((700/input).toFixed(2))}px`;
         gridItems[i].style.boxSizing = "border-box";
-        gridItems[i].style.border = "1px solid black"
+        gridItems[i].style.border = "1px solid black";
+        gridItems[i].style.backgroundColor = "white";
+        gridItems[i].style.opacity = "1";
         grid.appendChild(gridItems[i]);
-        gridItems[i].addEventListener("mouseover",(event)=>{
-            event.target.style.backgroundColor = gridColors[Math.floor((Math.random()) * 16)];
-        });
-        gridItems[i].addEventListener("click",(event)=>{
-            event.target.style.backgroundColor = "";
-        });
+        
     }
 }
+grid.addEventListener("mouseover",(event)=>{
+    event.target.style.backgroundColor = gridColors[Math.floor((Math.random()) * 16)];
+    event.target.style.opacity -= 0.1;
+});
+grid.addEventListener("click",(event)=>{
+    event.target.style.backgroundColor = "";
+});
 
 
 
